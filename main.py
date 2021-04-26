@@ -28,18 +28,18 @@ driver = webdriver.Chrome('chromedriver')
 
 videos = [
     'https://www.youtube.com/watch?v=Tdrw6TYvkKs',
-    'https://www.youtube.com/watch?v=AOHBksR1KDo',
+    'https://www.youtube.com/watch?v=6-f-2SIGUmY',
     'https://www.youtube.com/watch?v=S-fbH141_po',
     'https://www.youtube.com/watch?v=_9sqzdnlTmc'
 ]
 
 for i in range(times):
     print("Processando etapa {}.".format(i + 1))
-    chose = random.randint(0, 2)
+    chose = random.randint(0, 3)
     if chose == 0:
         name = 'Giro'
     elif chose == 1:
-        name = 'Air DK'
+        name = 'Jet Fly DK'
     elif chose == 2:
         name = 'Mj Tech'
     elif chose == 3:
@@ -49,6 +49,6 @@ for i in range(times):
     driver.get(videos[chose])
     time.sleep(sleep_time)
 
-print("Views finalizado -" + cores.FAIL + " OFF" + cores.ENDC)
+print("Views finalizado com sucesso -" + cores.FAIL + " OFF" + cores.ENDC)
 print(cores.FAIL + "Made by Mjj Records" + cores.ENDC)
 driver.quit()
