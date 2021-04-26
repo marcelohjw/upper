@@ -29,7 +29,8 @@ driver = webdriver.Chrome('chromedriver')
 videos = [
     'https://www.youtube.com/watch?v=Tdrw6TYvkKs',
     'https://www.youtube.com/watch?v=AOHBksR1KDo',
-    'https://www.youtube.com/watch?v=S-fbH141_po'
+    'https://www.youtube.com/watch?v=S-fbH141_po',
+    'https://www.youtube.com/watch?v=_9sqzdnlTmc'
 ]
 
 for i in range(times):
@@ -41,6 +42,8 @@ for i in range(times):
         name = 'Air DK'
     elif chose == 2:
         name = 'Mj Tech'
+    elif chose == 3:
+        name = '1st Runes 99'
     sleep_time = random.randint(30, 35)
     print(cores.OKBLUE + "Atual: " + name + " / " + str(sleep_time) + cores.ENDC)
     driver.get(videos[chose])
