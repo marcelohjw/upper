@@ -14,41 +14,37 @@ class cores:
     UNDERLINE = '\033[4m'
 
 
-print("Views" + cores.OKGREEN + " ON" + cores.ENDC)
 
-times = int(input("Quantas views voce quer gerar?(Coloque inteiros) : "))
+times = int(input("Quantas" + cores.OKGREEN + " views" + cores.ENDC + " voce quer gerar?(Coloque inteiros) : "))
 
-segundos = times * 35
-minutos = segundos / 60
-horas = minutos / 60
+videosCombien = int(input("Quantos videos voce quer dar up? : "))
 
-print(cores.OKBLUE + "Demorará, aproximadamente, {} segundos[{:.2f} minutos/{:.2f} horas] para processar as views, deixe o programa aberto.".format(segundos, minutos, horas) + cores.ENDC)
+if videosCombien == 1:
+    which_is = input("Copie e cole a seguir o video para dar um up: ")
+    videosDic = {0: which_is}
 
-driver = webdriver.Chrome('chromedriver')
+    segundos = times * 35
+    minutos = segundos / 60
+    horas = minutos / 60
 
-videos = [
-    'https://www.youtube.com/watch?v=Tdrw6TYvkKs',
-    'https://www.youtube.com/watch?v=6-f-2SIGUmY',
-    'https://www.youtube.com/watch?v=S-fbH141_po',
-    'https://www.youtube.com/watch?v=_9sqzdnlTmc'
-]
+    print("Views" + cores.OKGREEN + " ON" + cores.ENDC)
 
-for i in range(times):
-    print("Processando etapa {}.".format(i + 1))
-    chose = random.randint(0, 3)
-    if chose == 0:
-        name = 'Giro'
-    elif chose == 1:
-        name = 'Jet Fly DK'
-    elif chose == 2:
-        name = 'Mj Tech'
-    elif chose == 3:
-        name = '1st Runes 99'
-    sleep_time = random.randint(30, 35)
-    print(cores.OKBLUE + "Atual: " + name + " / " + str(sleep_time) + cores.ENDC)
-    driver.get(videos[chose])
-    time.sleep(sleep_time)
+    print(
+        cores.OKBLUE + "Demorará, aproximadamente, {} segundos[{:.2f} minutos/{:.2f} horas] para processar as views, deixe o programa aberto.".format(
+            segundos, minutos, horas) + cores.ENDC)
 
-print("Views finalizado com sucesso -" + cores.FAIL + " OFF" + cores.ENDC)
-print(cores.FAIL + "Made by Mjj Records" + cores.ENDC)
-driver.quit()
+    driver = webdriver.Chrome('chromedriver')
+    for i in range(times):
+        print("Processando etapa {}.".format(i + 1))
+        chose = random.randint(0, len(videosDic))
+        escolha = chose - 1
+        sleep_time = random.randint(30, 35)
+        print(cores.OKBLUE + str(sleep_time) + " segundos de aguardo.." + cores.ENDC)
+        driver.get(videosDic[0])
+        time.sleep(sleep_time)
+
+    print("Views finalizado com sucesso -" + cores.FAIL + " OFF" + cores.ENDC)
+    print(cores.FAIL + "Made by Mjj Records" + cores.ENDC)
+    driver.quit()
+else:
+    print("Por enquanto só oferecemos up em 1 vídeo.")
