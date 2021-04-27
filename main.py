@@ -28,7 +28,7 @@ if videosCombien == 1:
     minutos = segundos / 60
     horas = minutos / 60
 
-    print(cores.FAIL + "==============================================================================================" + cores.ENDC)
+    print(cores.FAIL + "=====================================================================================================" + cores.ENDC)
     print("Views" + cores.OKGREEN + " ON" + cores.ENDC)
 
     print(
@@ -55,11 +55,12 @@ else:
     horas = minutos / 60
     videosDic = {}
     while i < videosCombien:
-        which_is = input("Copie e cole o video " + str(i) + " a seguir para dar um up: ")
+        valorVideo = i + 1
+        which_is = input("Copie e cole o video " + str(valorVideo) + " a seguir para dar um up: ")
         videosDic[i] = which_is
         i += 1
     print(
-        cores.FAIL + "==============================================================================================" + cores.ENDC)
+        cores.FAIL + "=====================================================================================================" + cores.ENDC)
     print("Views" + cores.OKGREEN + " ON" + cores.ENDC)
 
     print(
@@ -68,7 +69,7 @@ else:
 
     driver = webdriver.Chrome('chromedriver')
     for i in range(times):
-        print("Processando etapa {}.".format(i + 1))
+        print("Processando etapa {}".format(i + 1) + " de " + str(times))
         maxValue = (len(videosDic) - 1)
         chose = random.randint(0, maxValue)
         sleep_time = random.randint(30, 35)
@@ -76,6 +77,6 @@ else:
         driver.get(videosDic[chose])
         time.sleep(sleep_time)
 
-    print("Views UPPER finalizado com sucesso -" + cores.FAIL + " OFF" + cores.ENDC)
+    print("Views " + cores.OKGREEN + "UPPER" + cores.ENDC + " finalizado com sucesso -" + cores.FAIL + " OFF" + cores.ENDC)
     print(cores.FAIL + "Made by Mjj Records" + cores.ENDC)
     driver.quit()
