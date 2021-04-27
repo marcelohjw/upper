@@ -14,10 +14,11 @@ class cores:
     UNDERLINE = '\033[4m'
 
 
+print(cores.FAIL + "========================================" + cores.ENDC + cores.OKGREEN + " UPPER " + cores.ENDC + cores.FAIL + "======================================================" + cores.ENDC)
 
 times = int(input("Quantas" + cores.OKGREEN + " views" + cores.ENDC + " voce quer gerar?(Coloque inteiros) : "))
 
-videosCombien = int(input("Quantos videos voce quer dar up? : "))
+videosCombien = int(input("Quantos" + cores.FAIL + " videos" + cores.ENDC + " voce quer dar up?(Coloque inteiros) : "))
 
 if videosCombien == 1:
     which_is = input("Copie e cole a seguir o video para dar um up: ")
@@ -27,6 +28,7 @@ if videosCombien == 1:
     minutos = segundos / 60
     horas = minutos / 60
 
+    print(cores.FAIL + "==============================================================================================" + cores.ENDC)
     print("Views" + cores.OKGREEN + " ON" + cores.ENDC)
 
     print(
@@ -47,4 +49,33 @@ if videosCombien == 1:
     print(cores.FAIL + "Made by Mjj Records" + cores.ENDC)
     driver.quit()
 else:
-    print("Por enquanto só oferecemos up em 1 vídeo.")
+    i = 0
+    segundos = times * 35
+    minutos = segundos / 60
+    horas = minutos / 60
+    videosDic = {}
+    while i < videosCombien:
+        which_is = input("Copie e cole o video " + str(i) + " a seguir para dar um up: ")
+        videosDic[i] = which_is
+        i += 1
+    print(
+        cores.FAIL + "==============================================================================================" + cores.ENDC)
+    print("Views" + cores.OKGREEN + " ON" + cores.ENDC)
+
+    print(
+        cores.OKBLUE + "Demorará, aproximadamente, {} segundos[{:.2f} minutos/{:.2f} horas] para processar as views, deixe o programa aberto.".format(
+            segundos, minutos, horas) + cores.ENDC)
+
+    driver = webdriver.Chrome('chromedriver')
+    for i in range(times):
+        print("Processando etapa {}.".format(i + 1))
+        maxValue = (len(videosDic) - 1)
+        chose = random.randint(0, maxValue)
+        sleep_time = random.randint(30, 35)
+        print(cores.OKBLUE + str(sleep_time) + " segundos de aguardo.." + cores.ENDC)
+        driver.get(videosDic[chose])
+        time.sleep(sleep_time)
+
+    print("Views UPPER finalizado com sucesso -" + cores.FAIL + " OFF" + cores.ENDC)
+    print(cores.FAIL + "Made by Mjj Records" + cores.ENDC)
+    driver.quit()
