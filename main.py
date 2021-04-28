@@ -79,4 +79,40 @@ else:
 
     print("Views " + cores.OKGREEN + "UPPER" + cores.ENDC + " finalizado com sucesso -" + cores.FAIL + " OFF" + cores.ENDC)
     print(cores.FAIL + "Made by Mjj Records" + cores.ENDC)
-    driver.quit()
+    final_question = input("Deseja repetir o mesmo processo? Sim(s)/Nao(n): ")
+    if final_question == "s":
+        run = 1
+        while run == 1:
+            i = 0
+            segundos = times * 35
+            minutos = segundos / 60
+            horas = minutos / 60
+            print(
+                cores.FAIL + "=====================================================================================================" + cores.ENDC)
+            print("Views" + cores.OKGREEN + " ON" + cores.ENDC)
+
+            print(
+                cores.OKBLUE + "Demorará, aproximadamente, {} segundos[{:.2f} minutos/{:.2f} horas] para processar as views, deixe o programa aberto.".format(
+                    segundos, minutos, horas) + cores.ENDC)
+
+            driver = webdriver.Chrome('chromedriver')
+            for i in range(times):
+                print("Processando etapa {}".format(i + 1) + " de " + str(times))
+                maxValue = (len(videosDic) - 1)
+                chose = random.randint(0, maxValue)
+                sleep_time = random.randint(30, 35)
+                print(cores.OKBLUE + str(sleep_time) + " segundos de aguardo.." + cores.ENDC)
+                driver.get(videosDic[chose])
+                time.sleep(sleep_time)
+
+            print(
+                "Views " + cores.OKGREEN + "UPPER" + cores.ENDC + " finalizado com sucesso -" + cores.FAIL + " OFF" + cores.ENDC)
+            print(cores.FAIL + "Made by Mjj Records" + cores.ENDC)
+            driver.quit()
+            final_question = input("Deseja repetir o mesmo processo? Sim(s)/Nao(n)")
+            if final_question == "s":
+                continue
+            else:
+                print(cores.FAIL + "Volte sempre!" + cores.ENDC)
+    else:
+        driver.quit()
