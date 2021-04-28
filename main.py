@@ -109,10 +109,12 @@ else:
                 "Views " + cores.OKGREEN + "UPPER" + cores.ENDC + " finalizado com sucesso -" + cores.FAIL + " OFF" + cores.ENDC)
             print(cores.FAIL + "Made by Mjj Records" + cores.ENDC)
             driver.quit()
-            final_question = input("Deseja repetir o mesmo processo? Sim(s)/Nao(n)")
+            final_question = input("Deseja repetir o mesmo processo? Sim(s)/Nao(n): ")
             if final_question == "s":
                 continue
             else:
+                run = 0
                 print(cores.FAIL + "Volte sempre!" + cores.ENDC)
+                break
     else:
         driver.quit()
