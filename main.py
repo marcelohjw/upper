@@ -24,7 +24,7 @@ if videosCombien == 1:
     which_is = input("Copie e cole a seguir o video para dar um up: ")
     videosDic = {0: which_is}
 
-    segundos = times * 35
+    segundos = times * 50
     minutos = segundos / 60
     horas = minutos / 60
 
@@ -40,7 +40,7 @@ if videosCombien == 1:
         print("Processando etapa {}.".format(i + 1))
         chose = random.randint(0, len(videosDic))
         escolha = chose - 1
-        sleep_time = random.randint(30, 40)
+        sleep_time = random.randint(50, 55)
         print(cores.OKBLUE + str(sleep_time) + " segundos de aguardo.." + cores.ENDC)
         driver.get(videosDic[0])
         time.sleep(sleep_time)
@@ -72,7 +72,7 @@ else:
         print("Processando etapa {}".format(i + 1) + " de " + str(times))
         maxValue = (len(videosDic) - 1)
         chose = random.randint(0, maxValue)
-        sleep_time = random.randint(30, 40)
+        sleep_time = random.randint(50, 55)
         print(cores.OKBLUE + str(sleep_time) + " segundos de aguardo.." + cores.ENDC)
         driver.get(videosDic[chose])
         time.sleep(sleep_time)
@@ -101,7 +101,7 @@ else:
                 print("Processando etapa {}".format(i + 1) + " de " + str(times))
                 maxValue = (len(videosDic) - 1)
                 chose = random.randint(0, maxValue)
-                sleep_time = random.randint(30, 35)
+                sleep_time = random.randint(50, 55)
                 print(cores.OKBLUE + str(sleep_time) + " segundos de aguardo.." + cores.ENDC)
                 driver.get(videosDic[chose])
                 time.sleep(sleep_time)
